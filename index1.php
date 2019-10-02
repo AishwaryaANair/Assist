@@ -14,4 +14,17 @@ if(isset($_POST['distance']))
     CloseCon($conn);
 
 }
+
+if(isset($_POST['lat']))
+{
+    $lat=$_POST['lat'];
+    $long=$_POST['long'];
+    echo "$lat";
+    echo "$long";
+    $SQL = "INSERT INTO location (lat,long) VALUES ('$lat','$long')";
+    mysqli_query($conn,$SQL);
+
+    CloseCon($conn);
+
+}
 ?>
