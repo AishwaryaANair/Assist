@@ -6,9 +6,11 @@ echo "Connected Successfully";
 
 if(isset($_POST['distance']))
 {
+    $email = $_POST['email'];
+    $userId = "SELECT identification from user where email in ($email)";
     $distance=$_POST['distance'];
     echo "$distance";
-    $SQL = "INSERT INTO distance (distance) VALUES ('$distance')";
+    $SQL = "INSERT INTO distance (distance,userFK) VALUES ('$distance',)";
     mysqli_query($conn,$SQL);
 
     $lat=$_POST['lat'];
