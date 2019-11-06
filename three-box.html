@@ -12,7 +12,7 @@ box-sizing: border-box;
 border-radius: 35px;
 border: 2px solid black;
 float: left;
-width: 50%;
+width: 100%;
 padding: 50px;
 height: 400px; /* Should be removed. Only for demonstration */
 margin-top: 30px;
@@ -47,16 +47,17 @@ clear: both;
 <body>
 <div class="row">
 <div class="column" style="background-color:white;">
-<a href="#"> <h1>START NAVIGATION</h1> </a>
-</div>
-<div class="column" style="background-color:white;">
 <a href="start_nav.html"> <h1>CHECK LOCATION</h1> </a>
 </div>
 </div>
 <div class="row1" style="background-color:white;">
 <div class="column1" style="background-color:white;">
-<a href="#" > <h1>EMERGENCY</h1> </a>
+<a href="emergency.php" > <h1>EMERGENCY</h1> </a>
 </div>
 </div>
 </body>
+<script src="https://code.responsivevoice.org/responsivevoice.js?key=GR3vv3Qk"></script>
+<script>
+    setTimeout(responsiveVoice.speak("Click on top for location click bottom for emergency"),15000);
+</script>
 </html>

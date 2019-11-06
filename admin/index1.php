@@ -3,7 +3,7 @@
 
     $conn = OpenCon();
     echo "Connected Successfully";
-
+    
     if(isset($_POST['lat']))
     {
 
@@ -13,7 +13,7 @@
         echo "$long";
         $SQL = "INSERT INTO location (lat,longitude) VALUES ('$lat','$long')";
         mysqli_query($conn,$SQL);
-
+        
         CloseCon($conn);
 
     }

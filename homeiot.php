@@ -1,3 +1,7 @@
+<?php
+  include('connection.php');
+  session_start();
+?>
 <!DOCTYPE html>
 <html>
 <title>ASSIST</title>
@@ -33,14 +37,14 @@ body, html {
 <!-- Navbar (sit on top) -->
 <div class="w3-top">
   <div class="w3-bar w3-white w3-card" id="myNavbar">
-    <a href="#home" class="w3-bar-item w3-button w3-wide">ASSIST</a>
+    <a href="homeiot.html" class="w3-bar-item w3-button w3-wide">ASSIST</a>
     <!-- Right-sided navbar links -->
     <div class="w3-right w3-hide-small">
-      <a href="mapiot.html" class="w3-bar-item w3-button">LOCATE</a>
-      <a href="#" class="w3-bar-item w3-button">ACESSIBILITY INFO</a>
-      <a href="helpiot.html" class="w3-bar-item w3-button"><i class="fa fa-user"></i>HELP</a>
+      <a href="mapiot.php" class="w3-bar-item w3-button">LOCATE</a>
+      <a href="helpiot.html" class="w3-bar-item w3-button"><i class="fa fa-user"></i>  HELP</a>
       <a href="ABOUT-iot.html" class="w3-bar-item w3-button">ABOUT</a>
-      <a href="#contact" class="w3-bar-item w3-button"><i class="fa fa-envelope"></i> CONTACT</a>
+      <a href="#contact" class="w3-bar-item w3-button"><i class="fa fa-envelope"></i>  CONTACT</a>
+      <a href="logout.php" class="w3-bar-item w3-button"><i class="fa fa-envelope"></i>  Logout</a>
     </div>
     <!-- Hide right-floated links on small screens and replace them with a menu icon -->
 
@@ -53,11 +57,12 @@ body, html {
 <!-- Sidebar on small screens when clicking the menu icon -->
 <nav class="w3-sidebar w3-bar-block w3-black w3-card w3-animate-left w3-hide-medium w3-hide-large" style="display:none" id="mySidebar">
   <a href="javascript:void(0)" onclick="w3_close()" class="w3-bar-item w3-button w3-large w3-padding-16">Close ×</a>
-  <a href="mapiot.html" onclick="w3_close()" class="w3-bar-item w3-button">LOCATE</a>
-  <a href="#team" onclick="w3_close()" class="w3-bar-item w3-button">ACESSIBILITY Info</a>
+  <a href="mapiot.php" onclick="w3_close()" class="w3-bar-item w3-button">LOCATE</a>
   <a href="helpiot.html" onclick="w3_close()" class="w3-bar-item w3-button">HELP</a>
   <a href="ABOUT-iot.html" onclick="w3_close()" class="w3-bar-item w3-button">ABOUT</a>
   <a href="#contact" onclick="w3_close()" class="w3-bar-item w3-button">CONTACT</a>
+  <a href="logout.php" class="w3-bar-item w3-button"><i class="fa fa-envelope"></i>  Logout</a>
+
 </nav>
 
 <!-- Header with full-height image -->
@@ -65,8 +70,6 @@ body, html {
   <div class="w3-display-left w3-text-white" style="padding:48px">
     <span class="w3-jumbo w3-hide-small">Start something that matters</span><br>
     <span class="w3-xxlarge w3-hide-large w3-hide-medium">Start something that matters</span><br>
-    <span class="w3-large">Stop wasting valuable time with projects that just isn't you.</span>
-    <p><a href="" class="w3-button w3-black  w3-padding-large w3-large w3-margin-top w3-opacity w3-hover-opacity-off" style = "border-radius:2rem;">START HERE</a></p>
   </div> 
   <div class="w3-display-bottomleft w3-text-grey w3-large" style="padding:24px 48px">
     <i class="fa fa-facebook-official w3-hover-opacity"></i>

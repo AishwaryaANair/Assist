@@ -1,3 +1,7 @@
+<?php 
+  include('connection.php');
+  session_start();
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -43,11 +47,11 @@ a{
     <a href = 'three-box.html'>VOICE</a>
   </div>
   <div class="rcorner1">
-    <a href="homeiot.html">NON-VOICE</a> 
+    <a href="loginiot.php">NON-VOICE</a> 
   </div>
-  <script src="https://code.responsivevoice.org/responsivevoice.js?key=GR3vv3Qk"></script>
+</body>
+<script src="https://code.responsivevoice.org/responsivevoice.js?key=GR3vv3Qk"></script>
   <script>
     setTimeout(responsiveVoice.speak("Click on top to enable voice navigation."),15000);
   </script>
-</body>
 </html>
