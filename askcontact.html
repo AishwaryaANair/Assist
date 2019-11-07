@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
  
-  <link rel="stylesheet" type="text/css" href="askcontact.css">
+  <link rel="stylesheet" type="text/css" href="css/askcontact.css">
 
 </head>
 <body>
@@ -16,18 +16,16 @@
      </div>
      <div class="form">
      
-    <form class="login-form" action="mail.php" method="POST">
-      <input type="text" name="email" placeholder="email"/>
+    <form class="login-form" action="voicelogin.php" method="POST">
+      <input type="email" name="email" placeholder="email"/>
       <input type="password" name="password" placeholder="password"/>
-      <button>login</button>
+      <button type = submit name = 'voicelogin'>login</button>
     </form>
   </div>
 </div>
-
-<script>
-$('.message a').click(function(){
-   $('form').animate({height: "toggle", opacity: "toggle"}, "slow");
-});
-</script>
 </body>
+<script src="https://code.responsivevoice.org/responsivevoice.js?key=GR3vv3Qk"></script>
+<script>
+    setTimeout(responsiveVoice.speak("Ask Emergency contact to register"),15000);
+</script>
 </html>

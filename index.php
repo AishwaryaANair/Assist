@@ -44,14 +44,14 @@ a{
 <body>
 
   <div class="rcorner1">
-    <a href = 'three-box.html'>VOICE</a>
+    <a href = 'check.php'>VOICE</a>
   </div>
   <div class="rcorner1">
     <a href="loginiot.php">NON-VOICE</a> 
   </div>
 </body>
 <script src="https://code.responsivevoice.org/responsivevoice.js?key=GR3vv3Qk"></script>
-  <script>
-    setTimeout(responsiveVoice.speak("Click on top to enable voice navigation."),15000);
-  </script>
+<script>
+    setTimeout(responsiveVoice.speak("Click on top for voice navigation"),15000);
+</script>
 </html>

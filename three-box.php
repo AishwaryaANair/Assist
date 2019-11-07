@@ -1,3 +1,6 @@
+<?php
+session_start()
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -43,11 +46,17 @@ display: table;
 clear: both;
 }
 </style>
-</head>
+<script>
+	function noBack() { window.history.forward(); }
+
+</HEAD>
+<BODY onload="noBack();" 
+	onpageshow="if (event.persisted) noBack();" onunload="">
+</script>
 <body>
 <div class="row">
 <div class="column" style="background-color:white;">
-<a href="start_nav.html"> <h1>CHECK LOCATION</h1> </a>
+<a href="start_nav.php"> <h1>CHECK LOCATION</h1> </a>
 </div>
 </div>
 <div class="row1" style="background-color:white;">

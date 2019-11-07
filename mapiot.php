@@ -88,7 +88,7 @@ p{
         <!--<a href="#" class="w3-bar-item w3-button">ACESSIBILITY INFO</a> -->
         <a href="#" class="w3-bar-item w3-button"><i class="fa fa-user"></i>HELP</a>
         <a href="ABOUT-iot.html" class="w3-bar-item w3-button">ABOUT</a>
-        <a href="#" class="w3-bar-item w3-button"><i class="fa fa-envelope"></i> CONTACT</a>
+  <a href="logout.php" class="w3-bar-item w3-button"><i class="fa fa-envelope"></i>  Logout</a>
       </div>
       <!-- Hide right-floated links on small screens and replace them with a menu icon -->
   
@@ -102,10 +102,7 @@ p{
   <nav class="w3-sidebar w3-bar-block w3-black w3-card w3-animate-left w3-hide-medium w3-hide-large" style="display:none" id="mySidebar">
 	<a href="javascript:void(0)" onclick="w3_close()" class="w3-bar-item w3-button w3-large w3-padding-16">Close ×</a>
     <a href="mapiot.html" onclick="w3_close()" class="w3-bar-item w3-button">LOCATE</a>
-    <a href="#team" onclick="w3_close()" class="w3-bar-item w3-button">ACESSIBILITY Info</a>
-    <a href="#work" onclick="w3_close()" class="w3-bar-item w3-button">HELP</a>
-    <a href="ABOUT-iot.html" onclick="w3_close()" class="w3-bar-item w3-button">ABOUT</a>
-	<a href="#contact" onclick="w3_close()" class="w3-bar-item w3-button">CONTACT</a>
+	<a href="logout.php" class="w3-bar-item w3-button"><i class="fa fa-envelope"></i>  Logout</a>
 	
   </nav>
   

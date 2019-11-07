@@ -4,26 +4,18 @@
 	/* Database connection settings */
 	session_start();
 	$conn = OpenCon();
-	$email = $_POST['email'];
- 	$coordinates = array();
- 	$latitudes = array();
- 	$longitudes = array();
-
-
-	// Select all the rows in the markers table
-	$query = "SELECT lat,longitude FROM location where timeUpdated = (SELECT MAX(timeUpdated) FROM location) LIMIT 1";
+	$query = "SELECT lat,longitude FROM location group by `lat`,`longitude`";
+	#$sql="SELECT * FROM mytable WHERE DATE_FORMAT(evedate, '%m/%d/%Y') BETWEEN '" . $from_date . "' AND  '" . $to_date . "'";
 	$result = $conn->query($query) or die('data selection for google map failed: ' . $conn->error);
 
- 	while ($row = mysqli_fetch_array($result)) {
-
-		$latitudes[] = $row['lat'];
-		$longitudes[] = $row['longitude'];
-		$coordinates[] = 'new google.maps.LatLng(' . $row['lat'] .','. $row['longitude'] .'),';
+	while( $row = $result->fetch_assoc() ){
+		$longitude = $row['longitude']; 
+		$latitude = $row['lat'];
+		/* Each row is added as a new array */
+		$locations[]=array( 'lat'=>$latitude, 'lng'=>$longitude );
 	}
-
-	//remove the comaa ',' from last coordinate
-	$lastcount = count($coordinates)-1;
-	$coordinates[$lastcount] = trim($coordinates[$lastcount], ",");	
+		
+	
 ?>
 <!DOCTYPE html>
 <html>
@@ -81,7 +73,7 @@ p{
 <!-- Navbar (sit on top) -->
 <div class="w3-top">
     <div class="w3-bar w3-white w3-card" id="myNavbar">
-      <a href="homeiot.php" class="w3-bar-item w3-button w3-wide">ASSIST</a>
+      <a href="admin.php" class="w3-bar-item w3-button w3-wide">ASSIST</a>
       <!-- Right-sided navbar links -->
       <div class="w3-right w3-hide-small">
         <a href="analysis.php" onclick="w3_close()" class="w3-bar-item w3-button">ANALYSIS</a>
@@ -89,6 +81,7 @@ p{
         <a href="#" class="w3-bar-item w3-button"><i class="fa fa-user"></i>HELP</a>
         <a href="ABOUT-iot.html" class="w3-bar-item w3-button">ABOUT</a>
         <a href="#" class="w3-bar-item w3-button"><i class="fa fa-envelope"></i> CONTACT</a>
+        <a href="../logout.php" class="w3-bar-item w3-button"><i class="fa fa-envelope"></i>Logout</a>
       </div>
       <!-- Hide right-floated links on small screens and replace them with a menu icon -->
   
@@ -106,6 +99,7 @@ p{
     <a href="#work" onclick="w3_close()" class="w3-bar-item w3-button">HELP</a>
     <a href="ABOUT-iot.html" onclick="w3_close()" class="w3-bar-item w3-button">ABOUT</a>
 	<a href="#contact" onclick="w3_close()" class="w3-bar-item w3-button">CONTACT</a>
+  <a href="../logout.php" class="w3-bar-item w3-button"><i class="fa fa-envelope"></i>Logout</a>
 	
   </nav>
   
@@ -116,26 +110,28 @@ p{
 	<!-- this div will hold your store info -->
 	<div id="info_div"></div>
 
-<script>
-	function initMap() {
-		var mapOptions = {
-			zoom: 18,
-			center: {<?php echo'lat:'. $latitudes[0] .', lng:'. $longitudes[0] ;?>}, //{lat: --- , lng: ....}
-			mapTypeId: google.maps.MapTypeId.SATELITE
-		};
+	<script>
+function initMap() {
+        var myLatLng = {lat: 19.045, lng: 72.8996};
 
-		var map = new google.maps.Map(document.getElementById('map'),mapOptions);
+        var map = new google.maps.Map(document.getElementById('map'), {
+          center: myLatLng,
+          scrollwheel: true,
+          zoom: 10,
+          mapTypeId: google.maps.MapTypeId.SATELITE
+         });
 
-		startPoint = {<?php echo'lat:'. $latitudes[0] .', lng:'. $longitudes[0] ;?>};
+        <?php for($i=0;$i<sizeof($locations);$i++)
+        { ?>
+         var marker = new google.maps.Marker({
+          map: map,
+          position: {lat: <?php echo $locations[$i]['lat']?>,lng: <?php echo $locations[$i]['lng']?>},
+          title: 'Locations'
+        });
+        <?php } ?>
+       }
 
-		var marker = new google.maps.Marker({
-		position: startPoint,
-		map: map,
-		title:"Location",
-		});
-
-	};
-
+    
 </script>
 
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAWfVDVuFU8wxpEGEZK7k8divVf7ElRjXU&callback=initMap" async defer></script>

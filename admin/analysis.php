@@ -8,15 +8,13 @@
       $start = date("Y-m-d", strtotime($_POST['start']));
       $end = date("Y-m-d", strtotime($_POST['end']));
 
-      $query = "SELECT lat,longitude FROM location where timeUpdated >= " . $start . " AND timeUpdated <= " . $end;
-      echo '<p>'.$query.'</p>';
+      $query = "SELECT lat,longitude FROM location where timeUpdated BETWEEN '" . $start . "' AND  '" . $end . "'";
+      #$sql="SELECT * FROM mytable WHERE DATE_FORMAT(evedate, '%m/%d/%Y') BETWEEN '" . $from_date . "' AND  '" . $to_date . "'";
       $result = $conn->query($query) or die('data selection for google map failed: ' . $conn->error);
 
       while( $row = $result->fetch_assoc() ){
         $longitude = $row['longitude']; 
-        echo '<p'.$longitude.'</p>';                             
         $latitude = $row['lat'];
-        echo '<p'.$latitude.'</p>';                             
         /* Each row is added as a new array */
         $locations[]=array( 'lat'=>$latitude, 'lng'=>$longitude );
     }
@@ -25,7 +23,7 @@
   else {
     $query =  $conn->query('SELECT * FROM location') or die('data selection for google map failed: ' . $conn->error);
     while( $row = $query->fetch_assoc() ){
-        $longitude = $row['longitude'];                              
+        $longitude = $row['longitude'];
         $latitude = $row['lat'];
         /* Each row is added as a new array */
         $locations[]=array( 'lat'=>$latitude, 'lng'=>$longitude );
@@ -121,9 +119,7 @@ label {
         <a href="analysis.php" class="w3-bar-item w3-button">ANALYSIS</a>
         <a href="location.php"  class="w3-bar-item w3-button">FREQUENT LOCATIONS</a>
         <!--<a href="#" class="w3-bar-item w3-button">ACESSIBILITY INFO</a> -->
-        <a href="#" class="w3-bar-item w3-button"><i class="fa fa-user"></i>HELP</a>
-        <a href="ABOUT-iot.html" class="w3-bar-item w3-button">ABOUT</a>
-        <a href="#" class="w3-bar-item w3-button"><i class="fa fa-envelope"></i> CONTACT</a>
+        <a href="../logout.php" class="w3-bar-item w3-button"><i class="fa fa-envelope"></i>Logout</a>
       </div>
       <!-- Hide right-floated links on small screens and replace them with a menu icon -->
   
@@ -138,9 +134,7 @@ label {
 	<a href="javascript:void(0)" onclick="w3_close()" class="w3-bar-item w3-button w3-large w3-padding-16">Close ×</a>
     <a href="mapiot.html" onclick="w3_close()" class="w3-bar-item w3-button">LOCATE</a>
     <a href="location.php"  class="w3-bar-item w3-button">FREQUENT LOCATIONS</a>
-    <a href="#work" onclick="w3_close()" class="w3-bar-item w3-button">HELP</a>
-    <a href="ABOUT-iot.html" onclick="w3_close()" class="w3-bar-item w3-button">ABOUT</a>
-	<a href="#contact" onclick="w3_close()" class="w3-bar-item w3-button">CONTACT</a>
+  <a href="../logout.php" class="w3-bar-item w3-button"><i class="fa fa-envelope"></i>Logout</a>
 	
   </nav>
   

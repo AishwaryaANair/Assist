@@ -1,13 +1,12 @@
 <?php 
-	session_start();
 
 	// variable declaration
 	$username = "";
 	$errors = array(); 
 	$_SESSION['success'] = "";
 
-	// connect to database
-	$db = mysqli_connect('localhost', 'root', '', 'registration');
+	// connect to database "1q2w3e4r5t";
+	$db = mysqli_connect('localhost', 'IOTUser', '1q2w3e4r5t', 'assist');
 
 	// REGISTER USER
 	if (isset($_POST['reg_user'])) {
