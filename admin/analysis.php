@@ -177,7 +177,6 @@ function initMap() {
     
 </script>
 
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAWfVDVuFU8wxpEGEZK7k8divVf7ElRjXU&callback=initMap" async defer></script>
-
+<script src="https://maps.googleapis.com/maps/api/js?">
 </body>
 </html>
